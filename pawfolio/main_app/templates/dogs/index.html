@@ -6,16 +6,8 @@
 {% for dog in dogs %}
   <div>
     <div>
-      <span>{{ dog.name }}</span>
-      <p>Age: {{dog.age}}
-      <p>Breed: {{ dog.breed }}</p>
-      <p>Weight: {{ dog.weight }}</p>
-      <p>Diet and Feeding Instructions: {{ dog.diet }}</p>
-      {% if dog.vaccinated %}
-      <p>Vaccines are up to date</p>
-      {% else %}
-      <p>Vaccines MUST be updated</p>
-      {% endif %}
+      <h2>{{ dog.name }}</h2>
+      <a href="{% url 'detail' dog.id %}">Details</a>
     </div>
   </div>
 {% endfor %}
