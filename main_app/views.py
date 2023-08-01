@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Dog
+from .models import Dog, Treat
 from .forms import ReportCardForm
 
 # Create your views here.
@@ -26,8 +27,13 @@ def dogs_index(request):
 @login_required
 def dogs_detail(request, dog_id):
   dog = Dog.objects.get(id=dog_id)
+  id_list = dog.treats.all().values_list('id')
+  treats_dog_doesnt_have = Treat.objects.exclude(id__in=id_list)
   reportcard_form = ReportCardForm()
-  return render(request, 'dogs/detail.html', { 'dog': dog, 'reportcard_form': reportcard_form})
+  return render(request, 'dogs/detail.html', {
+     'dog': dog, 'reportcard_form': reportcard_form,
+     'treats': treats_dog_doesnt_have
+     })
 
 def add_reportcard(request, dog_id):
   form = ReportCardForm(request.POST)
@@ -55,7 +61,19 @@ class DogUpdate(LoginRequiredMixin, UpdateView):
 class DogDelete(LoginRequiredMixin, DeleteView):
   model = Dog
   success_url = '/dogs'
-  
+
+class TreatList(LoginRequiredMixin, ListView): 
+  model = Treat
+
+@login_required
+def assoc_treat(request, dog_id, treat_id):
+    Dog.objects.get(id=dog_id).treats.add(treat_id)
+    return redirect('detail', dog_id=dog_id)  
+
+@login_required
+def unassoc_treat(request, dog_id, treat_id):
+    Dog.objects.get(id=dog_id).treats.remove(treat_id)
+    return redirect('detail', dog_id=dog_id)  
 
 def signup(request):
   error_message = ''

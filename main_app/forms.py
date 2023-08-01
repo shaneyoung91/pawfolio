@@ -5,3 +5,4 @@ class ReportCardForm(ModelForm):
     class Meta:
         model = ReportCard
         fields = ['date', 'behavior', 'summary', 'fed', 'grade']
+

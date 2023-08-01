@@ -40,6 +40,46 @@
           </tbody>
         </table>
       </div>
+      <hr>
+      <div>
+        <div>
+          <h3>{{ dog.name }}'s Treats</h3>
+          {% if dog.treats.count %}
+            {% for treat in dog.treats.all %}
+              <div>
+                <div>
+                    <p>{{ treat.name }}</p>
+                    <form action="{% url 'unassoc_treat' dog.id treat.id %}" method="POST">
+                      {% csrf_token %}
+                      <button type="submit" class="btn">Remove</button>
+                    </form>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <h5>No Treats Yet</h5>
+          {% endif %}
+        </div>
+        <div>
+          <h3>Available Treats</h3>
+          {% if treats.count %}
+            {% for treat in treats.all %}
+              <div>
+                <div>
+                    <p>{{ treat.name }}</p>
+                </div>
+                <div>
+                  <form action="{% url 'assoc_treat' dog.id treat.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn">Add</button>
+                  </form>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <h5>{{dog.name}} Already Has All Treats Available</h5>
+          {% endif %}
+        </div>      
 </div>
 
 {% endblock %}
