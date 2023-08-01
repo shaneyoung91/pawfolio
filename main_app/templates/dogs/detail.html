@@ -18,6 +18,28 @@
         <a href="{% url 'dogs_update' dog.id %}">Edit</a>
         <a href="{% url 'dogs_delete' dog.id %}">Delete</a>
       </div>
+      <div>
+        <h3>Report Card</h3>
+        <form action="{% url 'add_reportcard' dog.id %}" method="POST">
+          {% csrf_token %}
+          {{ reportcard_form.as_p }}
+          <input type="submit" class="btn" value="Add Report Card">
+        </form>
+        <table>
+          <thead>
+            <tr><th>Date</th></tr>
+          </thead>
+          <tbody>
+            {% for reportcard in dog.reportcard_set.all %}
+              <tr>
+                <td>{{reportcard.date}}</td>
+                <td>{{reportcard.get_grade_display}}</td>
+                {% comment %} <td><a href="{% url 'reportcard_details' dog.id reportcard.id %}"></a></td> {% endcomment %}
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
 </div>
 
 {% endblock %}

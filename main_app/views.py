@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Dog
+from .forms import ReportCardForm
 
 # Create your views here.
 def home(request):
@@ -25,7 +26,16 @@ def dogs_index(request):
 @login_required
 def dogs_detail(request, dog_id):
   dog = Dog.objects.get(id=dog_id)
-  return render(request, 'dogs/detail.html', { 'dog': dog })
+  reportcard_form = ReportCardForm()
+  return render(request, 'dogs/detail.html', { 'dog': dog, 'reportcard_form': reportcard_form})
+
+def add_reportcard(request, dog_id):
+  form = ReportCardForm(request.POST)
+  if form.is_valid():
+    new_reportcard = form.save(commit=False)
+    new_reportcard.dog_id = dog_id
+    new_reportcard.save()
+  return redirect('detail', dog_id=dog_id)
 
 
 class DogCreate(LoginRequiredMixin, CreateView):
