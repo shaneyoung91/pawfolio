@@ -3,4 +3,21 @@
 
 <h1>Dog List</h1>
 
+{% for dog in dogs %}
+  <div>
+    <div>
+      <span>{{ dog.name }}</span>
+      <p>Age: {{dog.age}}
+      <p>Breed: {{ dog.breed }}</p>
+      <p>Weight: {{ dog.weight }}</p>
+      <p>Diet and Feeding Instructions: {{ dog.diet }}</p>
+      {% if dog.vaccinated %}
+      <p>Vaccines are up to date</p>
+      {% else %}
+      <p>Vaccines MUST be updated</p>
+      {% endif %}
+    </div>
+  </div>
+{% endfor %}
+
 {% endblock %}
