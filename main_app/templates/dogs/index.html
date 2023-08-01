@@ -3,4 +3,13 @@
 
 <h1>Dog List</h1>
 
+{% for dog in dogs %}
+  <div>
+    <div>
+      <h2>{{ dog.name }}</h2>
+      <a href="{% url 'detail' dog.id %}">Details</a>
+    </div>
+  </div>
+{% endfor %}
+
 {% endblock %}

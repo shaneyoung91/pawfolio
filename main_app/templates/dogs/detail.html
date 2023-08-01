@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Dog Details</h1>
+
+<div>
+    <div>
+        <h2>{{ dog.name }}</h2>
+        <p>Age: {{dog.age}}
+        <p>Breed: {{ dog.breed }}</p>
+        <p>Weight: {{ dog.weight }}</p>
+        <p>Diet and Feeding Instructions: {{ dog.diet }}</p>
+        {% if dog.vaccinated %}
+        <p>Vaccines are up to date</p>
+        {% else %}
+        <p>Vaccines MUST be updated</p>
+        {% endif %}
+        <a href="{% url 'dogs_update' dog.id %}">Edit</a>
+        <a href="{% url 'dogs_delete' dog.id %}">Delete</a>
+      </div>
+</div>
+
+{% endblock %}
