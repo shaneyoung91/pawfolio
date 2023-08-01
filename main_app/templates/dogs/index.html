@@ -5,7 +5,7 @@
 
 {% for dog in dogs %}
     <div>
-        <div>
+        <div class='dog-card'>
         <h2>{{ dog.name }}</h2>
         <a href="{% url 'detail' dog.id %}">Details</a>
         </div>

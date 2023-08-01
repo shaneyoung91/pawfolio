@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,15 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>PawFolio</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Borel&family=Lato:wght@300&family=Lisu+Bosa:wght@200&family=Raleway:wght@200&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Raleway:wght@200&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="navbar-fixed">
+  <header>
     <nav>
-      <div class="nav-wrapper">
+      <div class='nav-flex'>
         <ul>
-          <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;PawFolio</a></li>
+          <li><img src='/static/css/images/logo.png'></li>
         </ul>
-        <ul class="right">
+        <ul>
           <li><a href="{% url 'about' %}">About</a></li>
           {% if user.is_authenticated %}
             <li><a href="{% url 'dogs_create' %}">Add a Dog</a></li>
