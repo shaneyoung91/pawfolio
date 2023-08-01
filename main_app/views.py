@@ -22,12 +22,12 @@ def dogs_detail(request, dog_id):
 class DogCreate(CreateView):
   model = Dog
   fields = '__all__'
-  success_url = '/dogs/{dog_id}'
+  success_url = '/dogs/'
 
 class DogUpdate(UpdateView):
   model = Dog
   fields = ['breed', 'age', 'weight', 'diet', 'vaccinated']
 
 class DogDelete(DeleteView):
-   model = Dog
-   success_url = '/dogs'
+  model = Dog
+  success_url = '/dogs'
