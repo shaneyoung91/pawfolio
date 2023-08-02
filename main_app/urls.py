@@ -14,4 +14,5 @@ urlpatterns = [
     path('treats/', views.TreatList.as_view(), name='treats_index'),
     path('dogs/<int:dog_id>/assoc_treat/<int:treat_id>/', views.assoc_treat, name='assoc_treat'),
     path('dogs/<int:dog_id>/unassoc_treat/<int:treat_id>/', views.unassoc_treat, name='unassoc_treat'),
+    path('dogs/<int:dog_id>/add_photo/', views.add_photo, name='add_photo'),
 ]

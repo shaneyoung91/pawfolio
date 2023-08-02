@@ -12,11 +12,12 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
+}
+
 h1 {
     font-family: 'Bungee Spice', cursive;
 }
+
 nav ul {
     display: flex;
     flex-direction: row;
@@ -51,6 +52,11 @@ nav img {
     margin: 2vmin;
     border-radius: 10px;
 }
+
 nav ul li a:hover {
     color: #BF1F3C;
+}
+
+#dog-details img {
+    width: 25vmin;
 }
