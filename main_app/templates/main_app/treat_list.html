@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Treat List</h1>
+
+{% for treat in treat_list %}
+    <div>
+        <p>{{ treat.name }} | {{ treat.flavor }}</p>
+    </div>
+{% endfor %}
+
+{% if object %}
+    <h1>Edit {{object.name}} </h1>
+{% else %}
+    <h1>Add Treat</h1>
+{% endif %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>
+            {{ form.as_p}}
+        </p>
+    <input type="submit" value="Submit" class="btn">
+    </form>
+
+{% endblock %}

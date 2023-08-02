@@ -45,7 +45,7 @@
               <tr>
                 <td>{{reportcard.date}}</td>
                 <td>{{reportcard.get_grade_display}}</td>
-                {% comment %} <td><a href="{% url 'reportcard_details' dog.id reportcard.id %}"></a></td> {% endcomment %}
+                <td><a href="{% url 'reportcard_details' dog.id reportcard.id %}">View</a></td>
               </tr>
             {% endfor %}
           </tbody>

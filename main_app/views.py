@@ -8,8 +8,8 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Dog, Treat, Photo
-from .forms import ReportCardForm
+from .models import Dog, Treat, Photo, ReportCard
+from .forms import ReportCardForm, TreatForm
 
 # Create your views here.
 def home(request):
@@ -46,6 +46,14 @@ def add_reportcard(request, dog_id):
     new_reportcard.save()
   return redirect('detail', dog_id=dog_id)
 
+@login_required
+def reportcard_details(request, dog_id, reportcard_id):
+  dog = Dog.objects.get(id=dog_id)
+  reportcard = ReportCard.objects.get(id=reportcard_id)
+  return render(request, 'dogs/reportcard_details.html', {
+    'reportcard': reportcard, 
+    'dog': dog
+    })
 
 class DogCreate(LoginRequiredMixin, CreateView):
   model = Dog
@@ -67,6 +75,21 @@ class DogDelete(LoginRequiredMixin, DeleteView):
 
 class TreatList(LoginRequiredMixin, ListView): 
   model = Treat
+
+class TreatCreate(CreateView):
+  model = Treat
+  form_class = TreatForm
+  fields = '__all__'
+  success_url = '/treats'
+  template_name = 'main_app/treat_list.html'
+
+class TreatUpdate(UpdateView):
+  model = Treat
+  fields = '__all__'
+
+class TreatDelete(DeleteView):
+  model = Treat
+  success_url = '/treats'
 
 @login_required
 def assoc_treat(request, dog_id, treat_id):
