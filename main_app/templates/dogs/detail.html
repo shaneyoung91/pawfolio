@@ -6,6 +6,17 @@
 <div id='dog-container'>
     <div id='dog-details'>
         <h2>{{ dog.name }}</h2>
+        {% for photo in dog.photo_set.all %}
+        <img src="{{photo.url}}">
+        {% empty %}
+        <div>No Photos Uploaded</div>
+        {% endfor %}
+        <form action="{% url 'add_photo' dog.id %}" enctype="multipart/form-data" method="POST">
+          {% csrf_token %}
+          <input type="file" name="photo-file">
+          <br><br>
+          <button type="submit" class="btn">Upload Photo</button>
+        </form>
         <p>Age: {{dog.age}}
         <p>Breed: {{ dog.breed }}</p>
         <p>Weight: {{ dog.weight }}</p>
