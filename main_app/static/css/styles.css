@@ -265,3 +265,22 @@ nav ul li a:hover {
 .btn:hover {
     background-color: #BF1F3C;
 }
+
+.about-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    padding: 0 140px 0 100px;
+}
+
+.about-p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding: 0 140px 0 100px;
+    font-size: 25px;
+    line-height: 2.0;
+    text-align: center;
+}
