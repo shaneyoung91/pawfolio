@@ -51,7 +51,7 @@
                       <td align="center">{{reportcard.get_grade_display}}</td>
                       <td><a href="{% url 'reportcard_detail' dog.id reportcard.id %}">View</a> | </td>
                       <td><a href="{% url 'reportcard_update' dog.id reportcard.id %}">Edit</a> | </td>
-                      <td><a href="{% url 'reportcard_delete' dog.id %}">Delete</a></td>
+                      <td><a href="{% url 'reportcard_delete' dog.id reportcard.id %}">Delete</a></td>
                   </tr>
               {% endfor %}
           </tbody>

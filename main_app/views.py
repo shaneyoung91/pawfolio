@@ -85,6 +85,29 @@ class ReportCardUpdate(LoginRequiredMixin, UpdateView):
 class ReportCardDelete(LoginRequiredMixin, DeleteView):
   model = ReportCard
   template_name = 'dogs/reportcard_confirm_delete.html'
+  
+  def get_success_url(self):
+    return reverse('detail', kwargs={'dog_id': self.kwargs['pk']})
+  
+  def get_object(self, queryset=None):
+        # Get the dog's primary key from the URL
+        dog_pk = self.kwargs.get('pk')
+
+        # Get the reportcard_id from the URL
+        reportcard_id = self.kwargs.get('reportcard_id')
+
+        # Retrieve the specific ReportCard instance to update
+        reportcard = ReportCard.objects.get(id=reportcard_id, dog__id=dog_pk)
+        return reportcard
+  
+  def get_context_data(self, **kwargs):
+    # Use super function to access and call methods of the parent class (DeleteView)
+    # This ensures we can add customizations to the context without overriding or negating
+      # the default behavior of the parent class (DeleteView)
+    context = super().get_context_data(**kwargs)
+    # Retrieve the correct Dog instance
+    context['dog'] = Dog.objects.get(pk=self.kwargs['pk'])  
+    return context
 
 
 class DogCreate(LoginRequiredMixin, CreateView):
