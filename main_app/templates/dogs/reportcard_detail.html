@@ -5,7 +5,7 @@
 <p>Date: {{reportcard.date}}
 <p>Behavior: {{ reportcard.behavior }}</p>
 <p>Summary: {{ reportcard.summary }}</p>
-{% if dog.fed %}
+{% if reportcard.fed %}
         <p>{{dog.name}} was fed</p>
         {% else %}
         <p>{{dog.name}} was not fed</p>

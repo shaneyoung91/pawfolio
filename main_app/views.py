@@ -8,6 +8,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse
 from .models import Dog, Treat, Photo, ReportCard
 from .forms import ReportCardForm, TreatForm
 
@@ -47,13 +48,44 @@ def add_reportcard(request, dog_id):
   return redirect('detail', dog_id=dog_id)
 
 @login_required
-def reportcard_details(request, dog_id, reportcard_id):
+def reportcard_detail(request, dog_id, reportcard_id):
   dog = Dog.objects.get(id=dog_id)
   reportcard = ReportCard.objects.get(id=reportcard_id)
-  return render(request, 'dogs/reportcard_details.html', {
+  return render(request, 'dogs/reportcard_detail.html', {
     'reportcard': reportcard, 
     'dog': dog
     })
+
+
+class ReportCardUpdate(LoginRequiredMixin, UpdateView):
+  model = ReportCard
+  fields = ['date', 'behavior', 'summary', 'fed', 'grade']
+  template_name = 'dogs/reportcard_form.html'
+
+  def get_success_url(self):
+        return reverse('detail', args=[str(self.kwargs['pk'])])
+
+  def get_object(self, queryset=None):
+        # Get the dog's primary key from the URL
+        dog_pk = self.kwargs.get('pk')
+
+        # Get the reportcard_id from the URL
+        reportcard_id = self.kwargs.get('reportcard_id')
+
+        # Retrieve the specific ReportCard instance to update
+        reportcard = ReportCard.objects.get(id=reportcard_id, dog__id=dog_pk)
+        return reportcard
+
+  def form_valid(self, form):
+        # Save the form and update the ReportCard instance
+        reportcard = form.save()
+        return super().form_valid(form)
+
+
+class ReportCardDelete(LoginRequiredMixin, DeleteView):
+  model = ReportCard
+  template_name = 'dogs/reportcard_confirm_delete.html'
+
 
 class DogCreate(LoginRequiredMixin, CreateView):
   model = Dog
@@ -76,12 +108,17 @@ class DogDelete(LoginRequiredMixin, DeleteView):
 class TreatList(LoginRequiredMixin, ListView): 
   model = Treat
 
-class TreatCreate(CreateView):
-  model = Treat
-  form_class = TreatForm
-  fields = '__all__'
-  success_url = '/treats'
-  template_name = 'main_app/treat_list.html'
+
+# CIRCLE BACK - ADDING DOG TREAT ON DOG INDEX PAGE
+def add_treat(request, treat_id):
+  form = TreatForm(request.POST)
+  if form.is_valid():
+    new_treat = form.save(commit=False)
+    new_treat.treat_id = treat_id
+    new_treat.save()
+  return redirect('treats_index', treat_id=treat_id)
+# ----------------------
+
 
 class TreatUpdate(UpdateView):
   model = Treat

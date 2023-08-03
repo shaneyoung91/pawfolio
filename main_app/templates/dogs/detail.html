@@ -38,14 +38,16 @@
         </form>
         <table>
           <thead>
-            <tr><th>Date</th></tr>
+            <tr><th>Date</th><th>Grade</th></tr>
           </thead>
           <tbody>
             {% for reportcard in dog.reportcard_set.all %}
               <tr>
                 <td>{{reportcard.date}}</td>
-                <td>{{reportcard.get_grade_display}}</td>
-                <td><a href="{% url 'reportcard_details' dog.id reportcard.id %}">View</a></td>
+                <td align="center">{{reportcard.get_grade_display}}</td>
+                <td><a href="{% url 'reportcard_detail' dog.id reportcard.id %}">View</a> | </td>
+                <td><a href="{% url 'reportcard_update' dog.id reportcard.id %}">Edit</a> | </td>
+                <td><a href="{% url 'reportcard_delete' dog.id %}">Delete</a></td>
               </tr>
             {% endfor %}
           </tbody>
