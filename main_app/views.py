@@ -39,21 +39,48 @@ def dogs_detail(request, dog_id):
     'treats': treats_dog_doesnt_have
     })
 
+@login_required
 def add_reportcard(request, dog_id):
-  form = ReportCardForm(request.POST)
-  if form.is_valid():
-    new_reportcard = form.save(commit=False)
-    new_reportcard.dog_id = dog_id
-    new_reportcard.save()
-  return redirect('detail', dog_id=dog_id)
+    dog = Dog.objects.get(id=dog_id)
+
+    if request.method == 'POST':
+        form = ReportCardForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_reportcard = form.save(commit=False)
+            new_reportcard.dog_id = dog_id
+
+            photo_file = request.FILES.get('photo_file')
+            if photo_file:
+                s3 = boto3.client('s3')
+                key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+                try:
+                    bucket = os.environ['S3_BUCKET']
+                    s3.upload_fileobj(photo_file, bucket, key)
+                    url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
+                    new_photo = Photo.objects.create(url=url, dog_id=dog_id)
+                    new_reportcard.photo = new_photo
+                except Exception as e:
+                    print('An error occurred uploading file to S3')
+                    print(e)
+
+            new_reportcard.save()
+            return redirect('reportcard_detail', dog_id=dog_id, reportcard_id=new_reportcard.id)
+    else:
+        form = ReportCardForm()
+
+    return render(request, 'dogs/reportcard_form.html', {
+        'dog': dog,
+        'reportcard_form': form
+    })
 
 @login_required
 def reportcard_detail(request, dog_id, reportcard_id):
-  dog = Dog.objects.get(id=dog_id)
-  reportcard = ReportCard.objects.get(id=reportcard_id)
-  return render(request, 'dogs/reportcard_detail.html', {
-    'reportcard': reportcard, 
-    'dog': dog
+    dog = Dog.objects.get(id=dog_id)
+    reportcard = ReportCard.objects.get(id=reportcard_id)
+
+    return render(request, 'dogs/reportcard_detail.html', {
+        'reportcard': reportcard, 
+        'dog': dog,
     })
 
 

@@ -3,14 +3,19 @@
 
 <h1>Report Card Details</h1>
 <div id="rc-details">
-        <p><strong>Date:</strong> {{reportcard.date}}
-        <p><strong>Behavior:</strong> {{ reportcard.behavior }}</p>
-        <p><strong>Summary:</strong> {{ reportcard.summary }}</p>
-        {% if reportcard.fed %}
-                <p>{{dog.name}} was fed</p>
-        {% else %}
-                <p>{{dog.name}} was not fed</p>
-        {% endif %}
-        <p><strong>Grade:</strong> {{ reportcard.grade }}</p>
+    <p><strong>Date:</strong> {{ reportcard.date }}</p>
+    <p><strong>Behavior:</strong> {{ reportcard.behavior }}</p>
+    <p><strong>Summary:</strong> {{ reportcard.summary }}</p>
+    {% if reportcard.fed %}
+        <p>{{ dog.name }} was fed</p>
+    {% else %}
+        <p>{{ dog.name }} was not fed</p>
+    {% endif %}
+    <p><strong>Grade:</strong> {{ reportcard.grade }}</p>
+    {% if reportcard.photo %}
+        <img src="{{ reportcard.photo.url }}" alt="{{ dog.name }}'s Photo">
+    {% else %}
+        <p>No photo available</p>
+    {% endif %}
 </div>
 {% endblock %}
