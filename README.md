@@ -9,7 +9,7 @@ Your Dog's Daily Delight! Stay connected with your furry friend through our cutt
 - Full functionally across the app!
 
 ## 🫧 Preview:
-
+- test
 
 ## 📌 Technologies Used:
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
