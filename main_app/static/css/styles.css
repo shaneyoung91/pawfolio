@@ -4,6 +4,10 @@ body {
     background-color: #FAF7EB;
 }
 
+a {
+    font-weight: bold;
+}
+
 h1 {
     font-family: 'Bungee Spice', cursive;
     font-size: 5vmin;
@@ -118,6 +122,13 @@ nav img {
     max-width: 60vmin;
 }
 
+#rc-details {
+    background-color: #ADD9D4;
+    padding: 3.5vmin;
+    border-radius: 10px;
+    max-width: 60vmin;
+}
+
 #current-treats {
     grid-area: treats;
     background-color: #ADD9D4;
@@ -135,7 +146,7 @@ nav img {
 }
 
 #avatar {
-    width: 25vmin;
+    width: 40vmin;
     border: 2px solid #BF1F3C;
     border-radius: 10px;
 }
@@ -165,6 +176,57 @@ nav img {
     text-decoration: none;
 }
 
+#report-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2vmin;
+    padding: 2vmin;
+    background-color: #ADD9D4;
+    border-radius: 10px;
+    width: 55vmin;
+    line-height: 2;
+}
+
+#report-form label {
+    font-size: 2vmin;
+    margin-bottom: 1vmin;
+    color: #000000;
+}
+
+#report-form input[type="text"],
+#report-form textarea {
+    padding: 1vmin;
+    border: 2px solid #50732D;
+    border-radius: 5px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 2vmin;
+}
+
+#report-form input[type="submit"] {
+    padding: 1vmin 2vmin;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 2vmin;
+    background-color: #50732D;
+    font-weight: bolder;
+    color: #FAF7EB;
+    cursor: pointer;
+}
+
+#report-form input[type="submit"]:hover {
+    background-color: #BF1F3C;
+}
+
+#report-form textarea {
+    resize: vertical;
+}
+
+#report-form p {
+    margin-bottom: 1vmin;
+}
+
 #dog-card {
     display: flex;
     flex-direction: row;
@@ -181,7 +243,18 @@ a:hover {
     color: #BF1F3C;
 }
 
+button:hover {
+    background-color: #BF1F3C;
+}
+
 nav ul li a:hover {
     color: #BF1F3C;
 }
 
+#detail-btn:hover {
+    background-color: #BF1F3C;
+}
+
+.btn:hover {
+    background-color: #BF1F3C;
+}
