@@ -128,18 +128,14 @@ class DogDelete(LoginRequiredMixin, DeleteView):
   model = Dog
   success_url = '/dogs'
 
+
 class TreatList(LoginRequiredMixin, ListView): 
   model = Treat
-
+  
 
 # CIRCLE BACK - ADDING DOG TREAT ON DOG INDEX PAGE
-def add_treat(request, treat_id):
-  form = TreatForm(request.POST)
-  if form.is_valid():
-    new_treat = form.save(commit=False)
-    new_treat.treat_id = treat_id
-    new_treat.save()
-  return redirect('treats_index', treat_id=treat_id)
+class TreatCreate(LoginRequiredMixin, CreateView):
+  model = Treat
 # ----------------------
 
 
@@ -147,19 +143,23 @@ class TreatUpdate(UpdateView):
   model = Treat
   fields = '__all__'
 
+
 class TreatDelete(DeleteView):
   model = Treat
   success_url = '/treats'
+
 
 @login_required
 def assoc_treat(request, dog_id, treat_id):
     Dog.objects.get(id=dog_id).treats.add(treat_id)
     return redirect('detail', dog_id=dog_id)  
 
+
 @login_required
 def unassoc_treat(request, dog_id, treat_id):
     Dog.objects.get(id=dog_id).treats.remove(treat_id)
     return redirect('detail', dog_id=dog_id)  
+
 
 def signup(request):
   error_message = ''
@@ -174,6 +174,7 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
 
 def add_photo(request, dog_id):
   photo_file = request.FILES.get('photo-file', None)
