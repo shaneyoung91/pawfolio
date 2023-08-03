@@ -32,7 +32,7 @@
       <a href="{% url 'dogs_delete' dog.id %}">Delete</a>
   </div>
   <div id='report-card'>
-      <h3>Report Card</h3>
+      <h2>Report Card</h2>
       <form id="report-form" action="{% url 'add_reportcard' dog.id %}" method="POST">
           {% csrf_token %}
           {{ reportcard_form.as_p }}
@@ -58,7 +58,7 @@
       </table>
   </div>
     <div id='current-treats'>
-        <h3>{{ dog.name }}'s Treats</h3>
+        <h2>{{ dog.name }}'s Treats</h2>
         {% if dog.treats.count %}
           {% for treat in dog.treats.all %}
             <div id="treat">
@@ -74,7 +74,7 @@
           {% endif %}
     </div>
     <div id='av-treats'>
-      <h3>Available Treats</h3>
+      <h2>Available Treats</h2>
         {% if treats.count %}
           {% for treat in treats.all %}
             <div id="treat">
