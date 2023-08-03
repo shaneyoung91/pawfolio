@@ -1,4 +1,4 @@
-#  PawFolio 🐾
+#       PawFolio 🐾
 
 ## 🫧 Desription:
 Your Dog's Daily Delight! Stay connected with your furry friend through our cutting-edge doggy daycare/boarding app. Get daily reports with adorable photos and updates about your dog's activities, playtime, meals, and more. Never miss a moment of their wagging tail and joyful antics. With PawFolio, your dog's happiness is just a notification away!
@@ -16,8 +16,10 @@ Your Dog's Daily Delight! Stay connected with your furry friend through our cutt
 ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
 ## 🔍 Code Preview:
 
