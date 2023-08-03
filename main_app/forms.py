@@ -6,7 +6,10 @@ class ReportCardForm(ModelForm):
         model = ReportCard
         fields = ['date', 'behavior', 'summary', 'fed', 'grade']
 
+
+# CIRCLE BACK - ADDING DOG TREAT ON DOG INDEX PAGE
 class TreatForm(ModelForm):
     class Meta:
         model = Treat
         fields = ['name', 'flavor']
+#  -------------------------------

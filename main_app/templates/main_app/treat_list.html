@@ -9,6 +9,8 @@
     </div>
 {% endfor %}
 
+
+{% comment %} CIRCLE BACK - ADDING DOG TREAT ON DOG INDEX PAGE {% endcomment %}
 {% if object %}
     <h1>Edit {{object.name}} </h1>
 {% else %}
@@ -17,7 +19,7 @@
     <form action="" method="post">
         {% csrf_token %}
         <p>
-            {{ form.as_p}}
+        {{ treat_form.as_p}}
         </p>
     <input type="submit" value="Submit" class="btn">
     </form>
