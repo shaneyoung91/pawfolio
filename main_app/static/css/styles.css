@@ -4,18 +4,25 @@ body {
     background-color: #FAF7EB;
 }
 
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 h1 {
     font-family: 'Bungee Spice', cursive;
+    font-size: 5vmin;
+    margin: 2vmin 0 0 2vmin;
+}
+
+hr {
+    border: solid 1px #878686;
+}
+
+button {
+    padding: 1vmin;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 2vmin;
+    background-color: #50732D;
+    font-weight: bolder;
+    color: #FAF7EB;
 }
 
 nav ul {
@@ -46,17 +53,135 @@ nav img {
     background-color: #F7CA4D;
 }
 
-.dog-card {
+.btn {
+    padding: 1vmin;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 2vmin;
+    background-color: #50732D;
+    font-weight: bolder;
+    color: #FAF7EB;
+}
+
+#home-img {
+    width: 50vmin;
+    margin: 2vmin;
+}
+
+#home-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#add-dog-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2vmin;
+    padding: 2vmin;
+    background-color: #ADD9D4;
+    border-radius: 10px;
+    width: 55vmin;
+    line-height: 2;
+}
+
+#dog-container {
+    display: grid;
+    gap: 2vmin;
+    padding: 3vmin;
+    justify-content: center;
+    grid-template-areas: 
+        'details report'
+        'avtreats treats';
+}
+
+#dog-details {
+    grid-area: details;
+    background-color: #ADD9D4;
+    padding: 3.5vmin;
+    border-radius: 10px;
+    max-width: 60vmin;
+}
+
+#report-card {
+    grid-area: report;
+    background-color: #ADD9D4;
+    padding: 3.5vmin;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 60vmin;
+}
+
+#current-treats {
+    grid-area: treats;
+    background-color: #ADD9D4;
+    padding: 3.5vmin;
+    border-radius: 10px;
+    max-width: 60vmin;
+}
+
+#av-treats {
+    grid-area: avtreats;
+    background-color: #ADD9D4;
+    padding: 3.5vmin;
+    border-radius: 10px;
+    max-width: 60vmin;
+}
+
+#avatar {
+    width: 25vmin;
+    border: 2px solid #BF1F3C;
+    border-radius: 10px;
+}
+
+#treat {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #F7CA4D;
+    border-radius: 10px;
+    padding: 1vmin;
+    margin: 1vmin;
+    font-weight: bold;
+    width: 25vmin;
+    border: solid 2px #BF1F3C;
+}
+
+#detail-btn {
+    padding: 1vmin;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 2vmin;
+    background-color: #50732D;
+    font-weight: bolder;
+    color: #FAF7EB;
+    text-decoration: none;
+}
+
+#dog-card {
+    display: flex;
+    flex-direction: row;
     background-color: #ADD9D4;
     padding: 0.5vmin 2vmin 2vmin 2vmin;
     margin: 2vmin;
     border-radius: 10px;
+    width: 30vmin;
+    justify-content: space-around;
+    align-items: center;
+}
+
+a:hover {
+    color: #BF1F3C;
 }
 
 nav ul li a:hover {
     color: #BF1F3C;
 }
 
-#dog-details img {
-    width: 25vmin;
-}

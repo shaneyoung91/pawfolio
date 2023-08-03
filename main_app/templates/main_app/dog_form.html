@@ -6,6 +6,7 @@
 {% else %}
   <h1>Add Dog</h1>
 {% endif %}
+<div id="add-dog-form">
   <form action="" method="POST">
     {% csrf_token %}
     <table>
@@ -13,4 +14,5 @@
     </table>
     <input type="submit" value="Submit" class="btn">
   </form>
+</div>
 {% endblock %}

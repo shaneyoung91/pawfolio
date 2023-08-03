@@ -4,86 +4,91 @@
 <h1>Dog Details</h1>
 
 <div id='dog-container'>
-    <div id='dog-details'>
-        <h2>{{ dog.name }}</h2>
-        {% for photo in dog.photo_set.all %}
-        <img src="{{photo.url}}">
-        {% empty %}
-        <div>No Photos Uploaded</div>
-        {% endfor %}
-        <form action="{% url 'add_photo' dog.id %}" enctype="multipart/form-data" method="POST">
+  <div id='dog-details'>
+      <h2>{{ dog.name }}</h2>
+      {% for photo in dog.photo_set.all %}
+          <img id="avatar" src="{{photo.url}}">
+      {% empty %}
+          <p>No Photos Uploaded</p>
+      {% endfor %}
+      <br>
+      <form action="{% url 'add_photo' dog.id %}" enctype="multipart/form-data" method="POST">
           {% csrf_token %}
           <input type="file" name="photo-file">
           <br><br>
           <button type="submit" class="btn">Upload Photo</button>
-        </form>
-        <p>Age: {{dog.age}}
-        <p>Breed: {{ dog.breed }}</p>
-        <p>Weight: {{ dog.weight }}</p>
-        <p>Diet and Feeding Instructions: {{ dog.diet }}</p>
-        {% if dog.vaccinated %}
-        <p>Vaccines are up to date</p>
-        {% else %}
-        <p>Vaccines MUST be updated</p>
-        {% endif %}
-        <a href="{% url 'dogs_update' dog.id %}">Edit</a>
-        <a href="{% url 'dogs_delete' dog.id %}">Delete</a>
-      </div>
-      <div id='report-card'>
-        <h3>Report Card</h3>
-        <form action="{% url 'add_reportcard' dog.id %}" method="POST">
+      </form>
+      <p><strong>Age:</strong> {{dog.age}}</p>
+      <p><strong>Breed:</strong> {{ dog.breed }}</p>
+      <p><strong>Weight:</strong> {{ dog.weight }}</p>
+      <p><strong>Diet and Feeding Instructions:</strong> {{ dog.diet }}</p>
+      {% if dog.vaccinated %}
+          <p><strong>Vaccines are up to date</strong></p>
+      {% else %}
+          <p><strong>Vaccines MUST be updated</strong></p>
+      {% endif %}
+      <a href="{% url 'dogs_update' dog.id %}">Edit</a> 
+      |
+      <a href="{% url 'dogs_delete' dog.id %}">Delete</a>
+  </div>
+  <div id='report-card'>
+      <h3>Report Card</h3>
+      <form action="{% url 'add_reportcard' dog.id %}" method="POST">
           {% csrf_token %}
           {{ reportcard_form.as_p }}
           <input type="submit" class="btn" value="Add Report Card">
-        </form>
-        <table>
+      </form>
+      <br>
+      <hr>
+      <table>
           <thead>
-            <tr><th>Date</th><th>Grade</th></tr>
+              <tr><th>Date</th><th>Grade</th></tr>
           </thead>
           <tbody>
-            {% for reportcard in dog.reportcard_set.all %}
-              <tr>
-                <td>{{reportcard.date}}</td>
-                <td align="center">{{reportcard.get_grade_display}}</td>
-                <td><a href="{% url 'reportcard_detail' dog.id reportcard.id %}">View</a> | </td>
-                <td><a href="{% url 'reportcard_update' dog.id reportcard.id %}">Edit</a> | </td>
-                <td><a href="{% url 'reportcard_delete' dog.id %}">Delete</a></td>
-              </tr>
-            {% endfor %}
+              {% for reportcard in dog.reportcard_set.all %}
+                  <tr>
+                      <td>{{reportcard.date}}</td>
+                      <td align="center">{{reportcard.get_grade_display}}</td>
+                      <td><a href="{% url 'reportcard_detail' dog.id reportcard.id %}">View</a> | </td>
+                      <td><a href="{% url 'reportcard_update' dog.id reportcard.id %}">Edit</a> | </td>
+                      <td><a href="{% url 'reportcard_delete' dog.id %}">Delete</a></td>
+                  </tr>
+              {% endfor %}
           </tbody>
-        </table>
-      </div>
-      <div id='treats'>
-        <div id='current-treats'>
-          <h3>{{ dog.name }}'s Treats</h3>
-          {% if dog.treats.count %}
-            {% for treat in dog.treats.all %}
-                    <p>{{ treat.name }}</p>
-                    <form action="{% url 'unassoc_treat' dog.id treat.id %}" method="POST">
-                      {% csrf_token %}
-                      <button type="submit" class="btn">Remove</button>
-                    </form>
-            {% endfor %}
+      </table>
+  </div>
+    <div id='current-treats'>
+        <h3>{{ dog.name }}'s Treats</h3>
+        {% if dog.treats.count %}
+          {% for treat in dog.treats.all %}
+            <div id="treat">
+              <p>{{ treat.name }}</p>
+              <form action="{% url 'unassoc_treat' dog.id treat.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn">Remove</button>
+              </form>
+            </div>
+          {% endfor %}
           {% else %}
             <h5>No Treats Yet</h5>
           {% endif %}
-        </div>
-        <div id='av-treats'>
-          <h3>Available Treats</h3>
-          {% if treats.count %}
-            {% for treat in treats.all %}
-              <div>
-                <p>{{ treat.name }}</p>
+    </div>
+    <div id='av-treats'>
+      <h3>Available Treats</h3>
+        {% if treats.count %}
+          {% for treat in treats.all %}
+            <div id="treat">
+              <p>{{ treat.name }}</p>
                 <form action="{% url 'assoc_treat' dog.id treat.id %}" method="POST">
-                {% csrf_token %}
-                <button type="submit" class="btn">Add</button>
+                  {% csrf_token %}
+                  <button type="submit" class="btn">Add</button>
                 </form>
-              </div>
-            {% endfor %}
+            </div>
+          {% endfor %}
           {% else %}
             <h5>{{dog.name}} Already Has All Treats Available</h5>
           {% endif %}
-        </div>      
+    </div>      
 </div>
 
 {% endblock %}

@@ -4,11 +4,9 @@
 <h1>Dog List</h1>
 
 {% for dog in dogs %}
-    <div>
-        <div class='dog-card'>
+    <div id="dog-card">
         <h2>{{ dog.name }}</h2>
-        <a href="{% url 'detail' dog.id %}">Details</a>
-        </div>
+        <a id="detail-btn" href="{% url 'detail' dog.id %}">Details</a>
     </div>
 {% endfor %}
 
