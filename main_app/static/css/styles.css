@@ -4,10 +4,6 @@ body {
     background-color: #FAF7EB;
 }
 
-a {
-    font-weight: bold;
-}
-
 h1 {
     font-family: 'Bungee Spice', cursive;
     font-size: 5vmin;
@@ -71,6 +67,7 @@ nav img {
 #home-img {
     width: 50vmin;
     margin: 2vmin;
+    border: solid 5px #BF1F3C;
 }
 
 #home-div {
@@ -111,6 +108,10 @@ nav img {
     max-width: 60vmin;
 }
 
+#dog-details a {
+    font-weight: bold;
+}
+
 #report-card {
     grid-area: report;
     background-color: #ADD9D4;
@@ -120,6 +121,10 @@ nav img {
     flex-direction: column;
     align-items: flex-start;
     max-width: 60vmin;
+}
+
+#report-card a {
+    font-weight: bold;
 }
 
 #rc-details {
@@ -146,8 +151,8 @@ nav img {
 }
 
 #avatar {
-    width: 40vmin;
-    border: 2px solid #BF1F3C;
+    width: 30vmin;
+    border: 5px solid #BF1F3C;
     border-radius: 10px;
 }
 
@@ -180,50 +185,52 @@ nav img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2vmin;
-    padding: 2vmin;
     background-color: #ADD9D4;
     border-radius: 10px;
     width: 55vmin;
-    line-height: 2;
 }
 
 #report-form label {
     font-size: 2vmin;
-    margin-bottom: 1vmin;
     color: #000000;
 }
 
 #report-form input[type="text"],
 #report-form textarea {
-    padding: 1vmin;
-    border: 2px solid #50732D;
+    border: 2px solid #878686;
     border-radius: 5px;
     font-family: 'Raleway', sans-serif;
     font-size: 2vmin;
 }
 
-#report-form input[type="submit"] {
-    padding: 1vmin 2vmin;
-    border: none;
+#report-form p {
+    margin-bottom: 1vmin;
+}
+
+#add-dog-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ADD9D4;
     border-radius: 10px;
+    width: 55vmin;
+}
+
+#add-dog-form label {
+    font-size: 2vmin;
+    color: #000000;
+}
+
+#add-dog-form input[type="text"],
+#add-dog-form input[type="number"],
+#add-dog-form textarea {
+    border: 2px solid #878686;
+    border-radius: 5px;
     font-family: 'Raleway', sans-serif;
     font-size: 2vmin;
-    background-color: #50732D;
-    font-weight: bolder;
-    color: #FAF7EB;
-    cursor: pointer;
 }
 
-#report-form input[type="submit"]:hover {
-    background-color: #BF1F3C;
-}
-
-#report-form textarea {
-    resize: vertical;
-}
-
-#report-form p {
+#add-dog-form p {
     margin-bottom: 1vmin;
 }
 
