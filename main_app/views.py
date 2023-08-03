@@ -163,8 +163,6 @@ class TreatList(LoginRequiredMixin, ListView):
 # CIRCLE BACK - ADDING DOG TREAT ON DOG INDEX PAGE
 class TreatCreate(LoginRequiredMixin, CreateView):
   model = Treat
-  fields = ['name']
-  success_url = '/treats'
 # ----------------------
 
 
