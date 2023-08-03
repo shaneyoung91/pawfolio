@@ -17,7 +17,7 @@ urlpatterns = [
     path('treats/', views.TreatList.as_view(), name='treats_index'),
     
     # CIRCLE BACK - ADDING DOG TREAT ON DOG INDEX PAGE
-    path('treats/add_treat', views.add_treat, name='add_treat'),
+    path('treats/add_treat', views.TreatCreate.as_view(), name='add_treat'),
     # -------------------------------
     
     path('dogs/<int:dog_id>/assoc_treat/<int:treat_id>/', views.assoc_treat, name='assoc_treat'),
