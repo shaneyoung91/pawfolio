@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2>Report Card Details</h2>
-<p>Date: {{reportcard.date}}
-<p>Behavior: {{ reportcard.behavior }}</p>
-<p>Summary: {{ reportcard.summary }}</p>
-{% if reportcard.fed %}
-        <p>{{dog.name}} was fed</p>
+<h1>Report Card Details</h1>
+<div id="rc-details">
+        <p><strong>Date:</strong> {{reportcard.date}}
+        <p><strong>Behavior:</strong> {{ reportcard.behavior }}</p>
+        <p><strong>Summary:</strong> {{ reportcard.summary }}</p>
+        {% if reportcard.fed %}
+                <p>{{dog.name}} was fed</p>
         {% else %}
-        <p>{{dog.name}} was not fed</p>
+                <p>{{dog.name}} was not fed</p>
         {% endif %}
-<p>Grade: {{ reportcard.grade }}</p>
-
+        <p><strong>Grade:</strong> {{ reportcard.grade }}</p>
+</div>
 {% endblock %}
