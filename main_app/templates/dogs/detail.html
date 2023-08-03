@@ -33,7 +33,7 @@
   </div>
   <div id='report-card'>
       <h2>Report Card</h2>
-      <form id="report-form" action="{% url 'add_reportcard' dog.id %}" method="POST">
+      <form id="report-form" action="{% url 'add_reportcard' dog.id %}" method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           {{ reportcard_form.as_p }}
           <input type="submit" class="btn" value="Add Report Card">
@@ -92,3 +92,5 @@
 </div>
 
 {% endblock %}
+
+
