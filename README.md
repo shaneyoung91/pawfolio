@@ -6,10 +6,10 @@ Your Dog's Daily Delight! Stay connected with your furry friend through our cutt
 ## ✨ Features:
 - Secure Login/Signup.
 - User friendly interface.
-- Full functionally across the app!
+- Full functionality across the app!
 
 ## 🫧 Preview:
-- test
+
 
 ## 📌 Technologies Used:
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
@@ -26,8 +26,8 @@ Your Dog's Daily Delight! Stay connected with your furry friend through our cutt
 Click the link 👉🏼
 
 ## 🔗 Links:
-- [Link to Wire Frame] (https://www.figma.com/file/CR4TUJh4KyuUc1r1ChQfxY/PawFolio-(Project-3)---Wireframe?type=design&node-id=0-1&mode=design&t=TMH9tKZRPzE8JPi6-0)
-- [Link to ERD] (https://lucid.app/lucidchart/be884cd1-a7b9-4435-b337-4f915d8637eb/edit?referringApp=slack&shared=true&page=0_0#)
+- [Link to Wire Frame](https://www.figma.com/file/CR4TUJh4KyuUc1r1ChQfxY/PawFolio-(Project-3)---Wireframe?type=design&node-id=0-1&mode=design&t=TMH9tKZRPzE8JPi6-0)
+- [Link to ERD](https://lucid.app/lucidchart/be884cd1-a7b9-4435-b337-4f915d8637eb/edit?referringApp=slack&shared=true&page=0_0#)
 
 ## 🧊 Next Steps and Icebox Items:
 - For both the user and admin to be able to see and schedule boarding dates.
