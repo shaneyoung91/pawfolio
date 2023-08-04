@@ -287,6 +287,11 @@ nav img {
     width: 3vmin;
 }
 
+#dog-photo {
+    width: 35vmin;
+    border: solid 2px #BF1F3C
+}
+
 a:hover {
     color: #BF1F3C;
 }

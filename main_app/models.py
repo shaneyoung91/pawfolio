@@ -45,7 +45,7 @@ class ReportCard(models.Model):
         default=GRADES[0][0]
     )
     fed = models.BooleanField(default=True)
-
+    photo_url = models.URLField(blank=True)
     dog = models.ForeignKey(Dog, on_delete=models.CASCADE)
 
     def __str__(self):

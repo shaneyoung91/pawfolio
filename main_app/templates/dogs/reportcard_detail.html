@@ -12,8 +12,8 @@
         <p>{{ dog.name }} was not fed</p>
     {% endif %}
     <p><strong>Grade:</strong> {{ reportcard.grade }}</p>
-    {% if reportcard.photo %}
-        <img src="{{ reportcard.photo.url }}" alt="{{ dog.name }}'s Photo">
+    {% if reportcard.photo_url %}
+        <img id="dog-photo" src="{{ reportcard.photo_url }}" alt="{{ dog.name }}'s Photo">
     {% else %}
         <p>No photo available</p>
     {% endif %}

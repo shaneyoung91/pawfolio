@@ -47,7 +47,7 @@ def add_reportcard(request, dog_id):
         form = ReportCardForm(request.POST, request.FILES)
         if form.is_valid():
             new_reportcard = form.save(commit=False)
-            new_reportcard.dog_id = dog_id
+            new_reportcard.dog = dog
 
             photo_file = request.FILES.get('photo_file')
             if photo_file:
@@ -57,8 +57,7 @@ def add_reportcard(request, dog_id):
                     bucket = os.environ['S3_BUCKET']
                     s3.upload_fileobj(photo_file, bucket, key)
                     url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
-                    new_photo = Photo.objects.create(url=url, dog_id=dog_id)
-                    new_reportcard.photo = new_photo
+                    new_reportcard.photo_url = url
                 except Exception as e:
                     print('An error occurred uploading file to S3')
                     print(e)
