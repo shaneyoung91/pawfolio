@@ -10,18 +10,18 @@ Your Dog's Daily Delight! Stay connected with your furry friend through our cutt
 
 ## 🫧 Preview:
 Landing Page:
-![Screenshot of Landing Page](static/css/images/home.png)
+![Screenshot of Landing Page](/static/css/images/home.png)
 Add and remove treats:
-![Screenshot of Treats Page](static/css/images/treats.png)
+![Screenshot of Treats Page](/static/css/images/treats.png)
 Add your dog:
-![Screenshot of Add Dog Page](static/css/images/adddog.png)
+![Screenshot of Add Dog Page](/static/css/images/adddog.png)
 View all your dogs:
-![Screenshot of Dog Index](static/css/images/dogindex.png)
+![Screenshot of Dog Index](/static/css/images/dogindex.png)
 View your dog's detail page:
-![Screenshot of Add Dog Page 1](static/css/images/dogdetail1.png)
-![Screenshot of Add Dog Page 2](static/css/images/dogdetail2.png)
+![Screenshot of Add Dog Page 1](/static/css/images/dogdetail1.png)
+![Screenshot of Add Dog Page 2](/static/css/images/dogdetail2.png)
 View your dog's report card:
-![Screenshot of Dog Repord Card](static/css/images/reportcard.png)
+![Screenshot of Dog Repord Card](/static/css/images/reportcard.png)
 
 ## 📌 Technologies Used:
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
