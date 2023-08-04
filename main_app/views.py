@@ -8,7 +8,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from .models import Dog, Treat, Photo, ReportCard
 from .forms import ReportCardForm, TreatForm
 
@@ -161,16 +161,9 @@ class TreatListCreate(LoginRequiredMixin, CreateView, ListView):
   context_object_name = 'treat_list'
   success_url = '/treats/'
 
-
-class TreatUpdate(UpdateView):
-  model = Treat
-  fields = '__all__'
-
-
 class TreatDelete(DeleteView):
-  model = Treat
-  success_url = '/treats'
-
+    model = Treat
+    success_url = reverse_lazy('treats_index')
 
 @login_required
 def assoc_treat(request, dog_id, treat_id):
