@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>Edit Report Card</h1>
-    <form action="" method="POST">
+    <form id="add-dog-form" action="" method="POST">
         {% csrf_token %}
         <table>
             {{ form.as_table }} 
