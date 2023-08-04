@@ -7,7 +7,7 @@ body {
 h1 {
     font-family: 'Bungee Spice', cursive;
     font-size: 5vmin;
-    margin: 2vmin 0 0 2vmin;
+    margin: 5vmin 0 0 5vmin;
 }
 
 hr {
@@ -41,7 +41,7 @@ nav ul li a {
 }
 
 nav img {
-    width: 10vmin;
+    width: 10.5vmin;
 }
 
 .nav-flex {
@@ -77,6 +77,26 @@ nav img {
     align-items: center;
 }
 
+#treat-list {
+    margin: 5vmin;
+    padding: 0 0 5vmin 5vmin;
+    line-height: 2;
+}
+
+#add-treat {
+    background-color: #ADD9D4;
+    padding: 1vmin 0 5vmin 5vmin;
+    border-radius: 10px;
+    max-width: 40vmin;
+}
+
+#add-treat input[type="text"] {
+    border: 2px solid #878686;
+    border-radius: 5px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 2vmin;
+}
+
 #add-dog-form{
     display: flex;
     flex-direction: column;
@@ -103,7 +123,7 @@ nav img {
 #dog-details {
     grid-area: details;
     background-color: #ADD9D4;
-    padding: 3.5vmin;
+    padding: 5vmin;
     border-radius: 10px;
     max-width: 60vmin;
 }
@@ -115,7 +135,7 @@ nav img {
 #report-card {
     grid-area: report;
     background-color: #ADD9D4;
-    padding: 3.5vmin;
+    padding: 5vmin;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -140,6 +160,9 @@ nav img {
     padding: 3.5vmin;
     border-radius: 10px;
     max-width: 60vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #av-treats {
@@ -148,6 +171,9 @@ nav img {
     padding: 3.5vmin;
     border-radius: 10px;
     max-width: 60vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #avatar {
@@ -185,7 +211,10 @@ nav img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #ADD9D4;
+    justify-content: center;
+    background-color: #F7CA4D;
+    padding: 2vmin;
+    border: solid 2px #BF1F3C;
     border-radius: 10px;
     width: 55vmin;
 }
@@ -244,6 +273,18 @@ nav img {
     width: 30vmin;
     justify-content: space-around;
     align-items: center;
+}
+
+#bone-img {
+    width: 2vmin;
+}
+
+#report-img {
+    width: 4vmin;
+}
+
+#food-img {
+    width: 3vmin;
 }
 
 a:hover {
