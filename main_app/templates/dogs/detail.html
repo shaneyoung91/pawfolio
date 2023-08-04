@@ -5,7 +5,7 @@
 
 <div id='dog-container'>
   <div id='dog-details'>
-      <h2>{{ dog.name }}</h2>
+      <h2><img id="report-img" src="/static/css/images/ball.png">  {{ dog.name }}</h2>
       {% for photo in dog.photo_set.all %}
           <img id="avatar" src="{{photo.url}}">
       {% empty %}
@@ -32,12 +32,14 @@
       <a href="{% url 'dogs_delete' dog.id %}">Delete</a>
   </div>
   <div id='report-card'>
-      <h2>Report Card</h2>
+    <h2><img id="report-img" src="/static/css/images/award.png"> Report Card</h2>
+    <div id="card-back">
       <form id="report-form" action="{% url 'add_reportcard' dog.id %}" method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           {{ reportcard_form.as_p }}
           <input type="submit" class="btn" value="Add Report Card">
       </form>
+    </div>
       <br>
       <hr>
       <table>
@@ -58,11 +60,11 @@
       </table>
   </div>
     <div id='current-treats'>
-        <h2>{{ dog.name }}'s Treats</h2>
+        <h2><img id="report-img" src="/static/css/images/dog-food.png"> {{ dog.name }}'s Treats</h2>
         {% if dog.treats.count %}
           {% for treat in dog.treats.all %}
             <div id="treat">
-              <p>{{ treat.name }}</p>
+              <p><img id="food-img" src="/static/css/images/bone.png"> {{ treat.name }}</p>
               <form action="{% url 'unassoc_treat' dog.id treat.id %}" method="POST">
                 {% csrf_token %}
                 <button type="submit" class="btn">Remove</button>
@@ -74,11 +76,11 @@
           {% endif %}
     </div>
     <div id='av-treats'>
-      <h2>Available Treats</h2>
+      <h2><img id="report-img" src="/static/css/images/dog-food.png">  Available Treats</h2>
         {% if treats.count %}
           {% for treat in treats.all %}
             <div id="treat">
-              <p>{{ treat.name }}</p>
+              <p><img id="food-img" src="/static/css/images/bone.png">  {{ treat.name }}</p>
                 <form action="{% url 'assoc_treat' dog.id treat.id %}" method="POST">
                   {% csrf_token %}
                   <button type="submit" class="btn">Add</button>
@@ -86,7 +88,7 @@
             </div>
           {% endfor %}
           {% else %}
-            <h5>{{dog.name}} Already Has All Treats Available</h5>
+            <h5>{{dog.name}}Already Has All Treats Available</h5>
           {% endif %}
     </div>      
 </div>

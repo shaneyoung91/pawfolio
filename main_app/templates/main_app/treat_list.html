@@ -2,21 +2,17 @@
 {% block content %}
 
 <h1>Treat List</h1>
-
-{% for treat in treat_list %}
-    <div>
-        <p>{{ treat.name }} | {{ treat.flavor }}</p>
+<div id="treat-list">
+    {% for treat in treat_list %}
+        <p><img id="bone-img" src="/static/css/images/bone.png"><strong>  {{ treat.name }} | {{ treat.flavor }}</strong></p>
+    {% endfor %}
+    <div id="add-treat">
+        <h1>Add Treat</h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                <p>{{ form.as_p }}</p>
+                <input type="submit" value="Submit" class="btn">
+            </form>
     </div>
-{% endfor %}
-
-
-{% comment %} CIRCLE BACK - ADDING DOG TREAT ON DOG INDEX PAGE {% endcomment %}
-<h1>Add Treat</h1>
-
-    <form action="" method="post">
-        {% csrf_token %}
-        <p>{{ form.as_p }}</p>
-    <input type="submit" value="Submit" class="btn">
-    </form>
-
+</div>
 {% endblock %}
