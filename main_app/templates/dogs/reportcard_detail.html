@@ -3,19 +3,23 @@
 
 <h1>Report Card Details</h1>
 <div id="rc-details">
-    <p><strong>Date:</strong> {{ reportcard.date }}</p>
-    <p><strong>Behavior:</strong> {{ reportcard.behavior }}</p>
-    <p><strong>Summary:</strong> {{ reportcard.summary }}</p>
-    {% if reportcard.fed %}
-        <p>{{ dog.name }} was fed</p>
-    {% else %}
-        <p>{{ dog.name }} was not fed</p>
-    {% endif %}
-    <p><strong>Grade:</strong> {{ reportcard.grade }}</p>
-    {% if reportcard.photo_url %}
-        <img id="dog-photo" src="{{ reportcard.photo_url }}" alt="{{ dog.name }}'s Photo">
-    {% else %}
-        <p>No photo available</p>
-    {% endif %}
+    <div id="rc-box-1">
+        {% if reportcard.photo_url %}
+            <img id="dog-photo" src="{{ reportcard.photo_url }}" alt="{{ dog.name }}'s Photo">
+        {% else %}
+            <p>No photo available</p>
+        {% endif %}
+    </div>
+    <div id="rc-box-2">
+        <p><strong>Date:</strong> {{ reportcard.date }}</p>
+        <p><strong>Behavior:</strong> {{ reportcard.behavior }}</p>
+        <p><strong>Summary:</strong> {{ reportcard.summary }}</p>
+        {% if reportcard.fed %}
+            <p>{{ dog.name }} was fed</p>
+        {% else %}
+            <p>{{ dog.name }} was not fed</p>
+        {% endif %}
+        <p><strong>Grade:</strong> {{ reportcard.grade }}</p>
+    </div>
 </div>
 {% endblock %}

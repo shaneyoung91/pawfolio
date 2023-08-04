@@ -64,6 +64,30 @@ nav img {
     color: #FAF7EB;
 }
 
+.about-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    padding: 0 140px 0 100px;
+}
+
+.about-p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding: 0 140px 0 100px;
+    font-size: 25px;
+    line-height: 2.0;
+    text-align: center;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 #home-img {
     width: 50vmin;
     margin: 2vmin;
@@ -81,13 +105,42 @@ nav img {
     margin: 5vmin;
     padding: 5 0 5vmin 5vmin;
     line-height: 2;
+    display: flex;
+    flex-direction: row;
+    gap: 10vmin;
+    align-items: center;
+    justify-content: center;
+}
+
+#curr-treats {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 3vmin;
+}
+
+#new-treat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#delete-btn {
+    background-color: #BF1F3C;
+    padding: 0.5vmin 1vmin;
+    border-radius: 5px;
+    color: white;
 }
 
 #add-treat {
     background-color: #ADD9D4;
-    padding: 1vmin 0 5vmin 5vmin;
+    padding: 0 5vmin 3vmin 5vmin;
     border-radius: 10px;
     max-width: 40vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 #add-treat input[type="text"] {
@@ -153,6 +206,10 @@ nav img {
     border-radius: 10px;
     max-width: 60vmin;
     margin: 5vmin;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
 }
 
 #current-treats {
@@ -206,6 +263,49 @@ nav img {
     font-weight: bolder;
     color: #FAF7EB;
     text-decoration: none;
+}
+
+#signup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #ADD9D4;
+    border-radius: 10px;
+    padding: 5vmin;
+    margin: 5vmin auto;
+}
+
+#signup input[type="text"],
+#signup  input[type="password"],
+#signup textarea {
+    border: 2px solid #878686;
+    border-radius: 5px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 2vmin;
+}
+
+#form-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ADD9D4;
+    border-radius: 10px;
+    padding: 5vmin;
+    margin: 5vmin auto;
+}
+
+#form-box label {
+    font-size: 2vmin;
+    color: #000000;
+}
+
+#form-box input[type="text"],
+#form-box  input[type="password"],
+#form-box textarea {
+    border: 2px solid #878686;
+    border-radius: 5px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 2vmin;
 }
 
 #report-form {
@@ -290,7 +390,8 @@ nav img {
 
 #dog-photo {
     width: 35vmin;
-    border: solid 2px #BF1F3C
+    border: solid 3px #BF1F3C;
+    border-radius: 10px;
 }
 
 a:hover {
@@ -313,21 +414,6 @@ nav ul li a:hover {
     background-color: #BF1F3C;
 }
 
-.about-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 15vh;
-    padding: 0 140px 0 100px;
-}
-
-.about-p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    padding: 0 140px 0 100px;
-    font-size: 25px;
-    line-height: 2.0;
-    text-align: center;
-}
+#delete-btn:hover {
+    background-color: #F7CA4D;
+} 

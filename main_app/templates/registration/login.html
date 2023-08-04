@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Log In</h1>
-
-<form id="add-dog-form" method="POST" action="{% url 'login' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="hidden" name="next" value="{{ next }}">
-    <button type="submit" class="btn">Log In</button>
-</form>
+<div id="container">
+    <h1>Log In</h1>
+    <form id="form-box" method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" name="next" value="{{ next }}">
+        <button type="submit" class="btn">Log In</button>
+    </form>
+</div>
 
 {% endblock %}
