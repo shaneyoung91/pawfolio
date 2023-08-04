@@ -1,19 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Treat List</h1>
 <div id="treat-list">
+    <div id="curr-treats">
+        <h1>Treat List</h1>
     {% for treat in treat_list %}
-        <p>
-            <img id="bone-img" src="/static/css/images/bone.png">
-            <strong>{{ treat.name }} | {{ treat.flavor }}</strong>
-                <form action="{% url 'treat_delete' treat.pk %}" method="post" style="display: inline;">
-                    {% csrf_token %}
-                    <input type="hidden" name="next" value="{{ request.path }}">
-                    <input type="submit" value="Delete" class="btn btn-danger">
-                </form>
-        </p>
+            <div id="new-treat">
+                <img id="bone-img" src="/static/css/images/bone.png">
+                <strong>{{ treat.name }} | {{ treat.flavor }}</strong>
+                    <form action="{% url 'treat_delete' treat.pk %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ request.path }}">
+                        <input id="delete-btn" type="submit" value="X" class="btn btn-danger">
+                    </form>
+            </div>
     {% endfor %}
+    </div>
     <div id="add-treat">
         <h1>Add Treat</h1>
         <form action="" method="post">

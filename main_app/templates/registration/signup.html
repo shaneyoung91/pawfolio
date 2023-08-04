@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Sign Up</h1>
+<div id="container">
+    <h1>Sign Up</h1>
 
-<p class="red-text">{{ error_message }}</p>
+    <p class="red-text">{{ error_message }}</p>
 
-<form id="add-dog-form" method="POST" action="{% url 'signup' %}">
-    {% csrf_token %}
+    <form id="signup" method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" class="btn" value="Sign Up">
-</form>
+        <input type="submit" class="btn" value="Sign Up">
+    </form>
+</div>
 
 {% endblock %}
