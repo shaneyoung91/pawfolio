@@ -155,15 +155,12 @@ class DogDelete(LoginRequiredMixin, DeleteView):
   model = Dog
   success_url = '/dogs'
 
-
-class TreatList(LoginRequiredMixin, ListView): 
+class TreatListCreate(LoginRequiredMixin, CreateView, ListView):
   model = Treat
-  
-
-# CIRCLE BACK - ADDING DOG TREAT ON DOG INDEX PAGE
-class TreatCreate(LoginRequiredMixin, CreateView):
-  model = Treat
-# ----------------------
+  template_name = 'main_app/treat_list.html'
+  form_class = TreatForm
+  context_object_name = 'treat_list'
+  success_url = '/treats/'
 
 
 class TreatUpdate(UpdateView):
