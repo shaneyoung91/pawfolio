@@ -24,7 +24,9 @@
           {% if user.is_authenticated %}
             <li><a href="{% url 'dogs_create' %}">Add a Dog</a></li>
             <li><a href="{% url 'index' %}">View Dogs</a></li>
-            <li><a href="{% url 'treats_index' %}">View All Treats</a></li>
+            {% if not avg_user %}
+              <li><a href="{% url 'treats_index' %}">View All Treats</a></li>
+            {% endif %}
             <li><a href="{% url 'logout' %}">Log Out</a></li>
           {% else %}
             <li><a href="{% url 'signup' %}">Sign Up</a></li>  

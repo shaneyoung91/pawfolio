@@ -7,7 +7,8 @@ from django.views.generic import ListView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.models import User, Permission
 from django.urls import reverse, reverse_lazy
 from .models import Dog, Treat, Photo, ReportCard
 from .forms import ReportCardForm, TreatForm
@@ -154,16 +155,32 @@ class DogDelete(LoginRequiredMixin, DeleteView):
   model = Dog
   success_url = '/dogs'
 
-class TreatListCreate(LoginRequiredMixin, CreateView, ListView):
+class TreatListCreate(PermissionRequiredMixin, LoginRequiredMixin, CreateView, ListView):
   model = Treat
   template_name = 'main_app/treat_list.html'
   form_class = TreatForm
   context_object_name = 'treat_list'
   success_url = '/treats/'
+  permission_required = 'main_app.create_treat'
 
-class TreatDelete(DeleteView):
-    model = Treat
-    success_url = reverse_lazy('treats_index')
+
+class TreatDelete(PermissionRequiredMixin, DeleteView):
+  model = Treat
+  success_url = reverse_lazy('treats_index')
+  permission_required = 'main_app.remove_treat'
+
+
+def treat_create_delete(request):
+    avg_user = request.user.has_perm('main_app.remove_treat')
+    treat_list = Treat.objects.all()  # Retrieve your treats
+    
+    context = {
+        'treat_list': treat_list,
+        'avg_user' : avg_user,
+    }
+
+    return render(request, 'main_app/treat_list.html', context)
+
 
 @login_required
 def assoc_treat(request, dog_id, treat_id):
@@ -206,3 +223,19 @@ def add_photo(request, dog_id):
       print('An error occurred uploading file to S3')
       print(e)
     return redirect('detail', dog_id=dog_id)
+
+# Get the desired permissions
+create_treat_perm = Permission.objects.get(codename='create_treat')
+remove_treat_perm = Permission.objects.get(codename='remove_treat')
+
+# Assign permissions to a user
+non_staff_users = User.objects.filter(is_staff=False)
+
+for user in non_staff_users:
+  user.user_permissions.remove(create_treat_perm, remove_treat_perm)
+  
+# Assign permissions to a user
+staff_users = User.objects.filter(is_staff=True)
+
+for user in staff_users:
+  user.user_permissions.add(create_treat_perm, remove_treat_perm)
