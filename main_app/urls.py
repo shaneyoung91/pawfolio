@@ -1,4 +1,5 @@
 from django.urls import path
+from .views import TreatListCreate, TreatDelete
 from . import views
 
 urlpatterns = [
@@ -15,11 +16,7 @@ urlpatterns = [
     path('dogs/<int:pk>/reportcard_delete/<int:reportcard_id>/', views.ReportCardDelete.as_view(), name='reportcard_delete'),
     path('accounts/signup/', views.signup, name='signup'),
     path('treats/', views.TreatListCreate.as_view(), name='treats_index'),
-    
-    # CIRCLE BACK - ADDING DOG TREAT ON DOG INDEX PAGE
-    # path('treats/add_treat', views.TreatCreate.as_view(), name='add_treat'),
-    # -------------------------------
-    
+    path('treats/<int:pk>/delete/', TreatDelete.as_view(), name='treat_delete'), 
     path('dogs/<int:dog_id>/assoc_treat/<int:treat_id>/', views.assoc_treat, name='assoc_treat'),
     path('dogs/<int:dog_id>/unassoc_treat/<int:treat_id>/', views.unassoc_treat, name='unassoc_treat'),
     path('dogs/<int:dog_id>/add_photo/', views.add_photo, name='add_photo'),
