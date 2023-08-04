@@ -79,7 +79,7 @@ nav img {
 
 #treat-list {
     margin: 5vmin;
-    padding: 0 0 5vmin 5vmin;
+    padding: 5 0 5vmin 5vmin;
     line-height: 2;
 }
 
@@ -157,7 +157,7 @@ nav img {
 #current-treats {
     grid-area: treats;
     background-color: #ADD9D4;
-    padding: 3.5vmin;
+    padding: 5vmin;
     border-radius: 10px;
     max-width: 60vmin;
     display: flex;
@@ -187,11 +187,11 @@ nav img {
     align-items: center;
     justify-content: space-evenly;
     background-color: #F7CA4D;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 1vmin;
     margin: 1vmin;
     font-weight: bold;
-    width: 25vmin;
+    width: 35vmin;
     border: solid 2px #BF1F3C;
 }
 
