@@ -24,7 +24,7 @@ def about(request):
 def dogs_index(request):
     dogs = Dog.objects.filter(user=request.user)
     return render(request, 'dogs/index.html', {
-        'dogs' : dogs
+      'dogs' : dogs
     })
 
 
@@ -155,15 +155,12 @@ class DogDelete(LoginRequiredMixin, DeleteView):
   model = Dog
   success_url = '/dogs'
 
-
-class TreatList(LoginRequiredMixin, ListView): 
+class TreatListCreate(LoginRequiredMixin, CreateView, ListView):
   model = Treat
-  
-
-# CIRCLE BACK - ADDING DOG TREAT ON DOG INDEX PAGE
-class TreatCreate(LoginRequiredMixin, CreateView):
-  model = Treat
-# ----------------------
+  template_name = 'main_app/treat_list.html'
+  form_class = TreatForm
+  context_object_name = 'treat_list'
+  success_url = '/treats/'
 
 
 class TreatUpdate(UpdateView):

@@ -14,10 +14,10 @@ urlpatterns = [
     path('dogs/<int:pk>/reportcard_update/<int:reportcard_id>/', views.ReportCardUpdate.as_view(), name='reportcard_update'),
     path('dogs/<int:pk>/reportcard_delete/<int:reportcard_id>/', views.ReportCardDelete.as_view(), name='reportcard_delete'),
     path('accounts/signup/', views.signup, name='signup'),
-    path('treats/', views.TreatList.as_view(), name='treats_index'),
+    path('treats/', views.TreatListCreate.as_view(), name='treats_index'),
     
     # CIRCLE BACK - ADDING DOG TREAT ON DOG INDEX PAGE
-    path('treats/add_treat', views.TreatCreate.as_view(), name='add_treat'),
+    # path('treats/add_treat', views.TreatCreate.as_view(), name='add_treat'),
     # -------------------------------
     
     path('dogs/<int:dog_id>/assoc_treat/<int:treat_id>/', views.assoc_treat, name='assoc_treat'),
