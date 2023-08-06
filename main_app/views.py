@@ -21,13 +21,13 @@ def about(request):
     return render(request, 'about.html')
 
 
+# Dog Functions
 @login_required
 def dogs_index(request):
     dogs = Dog.objects.filter(user=request.user)
     return render(request, 'dogs/index.html', {
       'dogs' : dogs
     })
-
 
 @login_required
 def dogs_detail(request, dog_id):
@@ -40,6 +40,24 @@ def dogs_detail(request, dog_id):
     'treats': treats_dog_doesnt_have
     })
 
+class DogCreate(LoginRequiredMixin, CreateView):
+  model = Dog
+  fields = ['name', 'breed', 'age', 'weight', 'diet', 'vaccinated']
+  
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+
+class DogUpdate(LoginRequiredMixin, UpdateView):
+  model = Dog
+  fields = ['breed', 'age', 'weight', 'diet', 'vaccinated']
+
+class DogDelete(LoginRequiredMixin, DeleteView):
+  model = Dog
+  success_url = '/dogs'
+
+
+# Report Card Functions
 @login_required
 def add_reportcard(request, dog_id):
     dog = Dog.objects.get(id=dog_id)
@@ -83,7 +101,6 @@ def reportcard_detail(request, dog_id, reportcard_id):
         'dog': dog,
     })
 
-
 class ReportCardUpdate(LoginRequiredMixin, UpdateView):
   model = ReportCard
   fields = ['date', 'behavior', 'summary', 'fed', 'grade']
@@ -107,7 +124,6 @@ class ReportCardUpdate(LoginRequiredMixin, UpdateView):
         # Save the form and update the ReportCard instance
         reportcard = form.save()
         return super().form_valid(form)
-
 
 class ReportCardDelete(LoginRequiredMixin, DeleteView):
   model = ReportCard
@@ -137,24 +153,7 @@ class ReportCardDelete(LoginRequiredMixin, DeleteView):
     return context
 
 
-class DogCreate(LoginRequiredMixin, CreateView):
-  model = Dog
-  fields = ['name', 'breed', 'age', 'weight', 'diet', 'vaccinated']
-  
-  def form_valid(self, form):
-    form.instance.user = self.request.user
-    return super().form_valid(form)
-
-
-class DogUpdate(LoginRequiredMixin, UpdateView):
-  model = Dog
-  fields = ['breed', 'age', 'weight', 'diet', 'vaccinated']
-
-
-class DogDelete(LoginRequiredMixin, DeleteView):
-  model = Dog
-  success_url = '/dogs'
-
+# Treat Functions
 class TreatListCreate(PermissionRequiredMixin, LoginRequiredMixin, CreateView, ListView):
   model = Treat
   template_name = 'main_app/treat_list.html'
@@ -163,12 +162,10 @@ class TreatListCreate(PermissionRequiredMixin, LoginRequiredMixin, CreateView, L
   success_url = '/treats/'
   permission_required = 'main_app.create_treat'
 
-
 class TreatDelete(PermissionRequiredMixin, DeleteView):
   model = Treat
   success_url = reverse_lazy('treats_index')
   permission_required = 'main_app.remove_treat'
-
 
 def treat_create_delete(request):
     avg_user = request.user.has_perm('main_app.remove_treat')
@@ -181,12 +178,10 @@ def treat_create_delete(request):
 
     return render(request, 'main_app/treat_list.html', context)
 
-
 @login_required
 def assoc_treat(request, dog_id, treat_id):
     Dog.objects.get(id=dog_id).treats.add(treat_id)
     return redirect('detail', dog_id=dog_id)  
-
 
 @login_required
 def unassoc_treat(request, dog_id, treat_id):
@@ -194,6 +189,7 @@ def unassoc_treat(request, dog_id, treat_id):
     return redirect('detail', dog_id=dog_id)  
 
 
+# Signup
 def signup(request):
   error_message = ''
   if request.method == 'POST':
@@ -209,6 +205,7 @@ def signup(request):
   return render(request, 'registration/signup.html', context)
 
 
+# Add Photo
 def add_photo(request, dog_id):
   photo_file = request.FILES.get('photo-file', None)
   if photo_file:
@@ -223,6 +220,7 @@ def add_photo(request, dog_id):
       print('An error occurred uploading file to S3')
       print(e)
     return redirect('detail', dog_id=dog_id)
+
 
 # Get the desired permissions
 create_treat_perm = Permission.objects.get(codename='create_treat')

@@ -15,7 +15,7 @@ class Treat(models.Model):
             ("remove_treat", "Can delete treat"),
         ]
 
-# Create your models here.
+
 class Dog(models.Model):
     name = models.CharField(max_length=50)
     age = models.IntegerField()
@@ -31,7 +31,8 @@ class Dog(models.Model):
     
     def get_absolute_url(self):
         return reverse('detail', kwargs={'dog_id': self.id})
-    
+
+
 GRADES = (
     ('A', 'A'),
     ('B', 'B'),
